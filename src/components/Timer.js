@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 
 function Timer({ dispatch, secondRemaining }) {
+  const minute = Math.ceil(secondRemaining / 60);
+  const second = secondRemaining % 60;
+
   useEffect(
     function () {
       const id = setInterval(function () {
@@ -14,7 +17,9 @@ function Timer({ dispatch, secondRemaining }) {
 
   return (
     <div className="timer">
-      <p>{secondRemaining}</p>
+      <p>{`${minute < 10 ? "0" : ""}${minute} : ${
+        second < 10 ? "0" : ""
+      }${second}`}</p>
     </div>
   );
 }
